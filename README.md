@@ -2,4 +2,4 @@
 
 The main code of PATER for FER
 
-the other code will come soon!
+the other codes and checkpoints will come soon!
