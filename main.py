@@ -32,9 +32,8 @@ parser.add_argument('--epochs', default=100, type=int, metavar='N', help='number
 parser.add_argument('--batch_size', default=128, type=int, metavar='N')
 parser.add_argument('--optimizer', type=str, default="adam", help='Optimizer, adam or sgd.')
 
-parser.add_argument('--lam', default=0.7, type=float, help='hyper_param of loss adjust.')
-parser.add_argument('--lr', default=0.00005, type=float, metavar='LR', dest='lr')
-parser.add_argument('--momentum', default=0.9, type=float, metavar='M')
+parser.add_argument('--lam', default=0.45, type=float, help='hyper_param of loss adjust.')
+parser.add_argument('--lr', default=2.5e-4, type=float, metavar='LR', dest='lr')
 parser.add_argument('--weight-decay', default=1e-4, type=float, metavar='W', dest='weight_decay')
 parser.add_argument('--print-freq', default=20, type=int, metavar='N', help='print frequency')
 parser.add_argument('--resume', default=None, type=str, metavar='PATH', help='path to checkpoint')
@@ -103,7 +102,7 @@ def main():
                                                                      transforms.ToTensor(),
                                                                      transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                                                                           std=[0.229, 0.224, 0.225]),
-                                                                     transforms.RandomErasing(p=1, scale=(0.05, 0.05))]))
+                                                                     transforms.RandomErasing(p=1, scale=(0.05, 0.07))]))
             train_loader = torch.utils.data.DataLoader(train_dataset,
                                                        sampler=ImbalancedDatasetSampler(train_dataset),
                                                        batch_size=args.batch_size,
